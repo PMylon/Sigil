@@ -28,5 +28,15 @@
 
 # Executables
 *.exe
+!bossac.exe
 *.out
 *.app
+
+# VsCode files
+.vscode*
+
+# Thirdparty
+thirdparty/zephyrproject
+
+# Build artifacts
+build

@@ -1,0 +1,7 @@
+&i2c0 {
+	lsm9ds1-acc@6b {
+		compatible = "st,lsm6ds0";
+		reg = <0x6b>;
+		label = "LSM9DS1-ACC";
+	};
+};

@@ -1,0 +1,7 @@
+manifest:
+  # Use my zephyr fork to include modifications in lsm6ds0 driver for enabling FIFO
+  projects:
+    - name: zephyr
+      url: https://github.com/PMylon/zephyr
+      revision: feature/lsm6ds0-enable-fifo-support
+      import: true # Import zephyr's west manifest
