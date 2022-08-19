@@ -40,6 +40,9 @@ init_env()
 
     cd $cwd
 
+    # Update submodule for BOSSA bootloader
+    git submodule update --init --recursive thirdparty/tools/BOSSA
+
     activate_env
 }
 
@@ -66,6 +69,10 @@ build()
 
     echo "Building project.."
 
+    cd thirdparty/tools/BOSSA
+    make
+    cd ../../../
+
     west build -p auto -b arduino_nano_33_ble .
 }
 
@@ -79,7 +86,7 @@ flash()
 
     echo "Flashing project"
 
-    west flash --bossac=thirdparty/tools/bossac/bin/bossac
+    west flash --bossac=thirdparty/tools/BOSSA/bin/bossac
 }
 
 debug()

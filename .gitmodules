@@ -1,0 +1,3 @@
+[submodule "thirdparty/tools/BOSSA"]
+	path = thirdparty/tools/BOSSA
+	url = https://github.com/arduino/BOSSA.git

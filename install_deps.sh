@@ -1,6 +1,9 @@
 #!/bin/sh
-# Install Zephyr dependencies for Ubuntu
+
+# Install dependencies for Ubuntu
 # Usage: install_deps.sh
+
+# Install Zephyr dependencies
 
 # Update OS
 sudo apt update
@@ -23,3 +26,6 @@ sudo apt install --no-install-recommends git cmake ninja-build gperf \
 cmake --version
 python3 --version
 dtc --version
+
+# Install BOSSA dependencies (For flashing the board)
+sudo apt install libwxgtk3.0-gtk3-dev libreadline-dev
