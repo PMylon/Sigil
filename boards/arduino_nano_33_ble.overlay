@@ -1,3 +1,15 @@
+/ {
+	chosen {
+		zephyr,console = &cdc_acm_uart0;
+	};
+};
+
+&zephyr_udc0 {
+	cdc_acm_uart0: cdc_acm_uart0 {
+		compatible = "zephyr,cdc-acm-uart";
+	};
+};
+
 &i2c0 {
 	lsm9ds1-acc@6b {
 		compatible = "st,lsm6ds0";

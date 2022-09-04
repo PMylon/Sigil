@@ -45,6 +45,8 @@ namespace {
 /* The name of this function is important for Arduino compatibility. */
 void setup(void)
 {
+	SetupOutput();
+
 	/* Set up logging. Google style is to avoid globals or statics because of
 	 * lifetime uncertainty, but since this has a trivial destructor it's okay.
 	 */
