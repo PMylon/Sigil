@@ -83,10 +83,8 @@ TfLiteStatus SetupAccelerometer(tflite::ErrorReporter *error_reporter)
 		.val2 = 0,
 	};
 
-	if (sensor_attr_set(dev, SENSOR_CHAN_ALL,
-			    SENSOR_ATTR_SAMPLING_FREQUENCY, &sampling_freq)) {
-		printk("Could not set sampling frequency\n");
-		return;
+	if (sensor_attr_set(sensor, SENSOR_CHAN_ACCEL_XYZ, SENSOR_ATTR_SAMPLING_FREQUENCY, &sampling_freq)) {
+		TF_LITE_REPORT_ERROR(error_reporter, "Could not set sampling frequency\n");
 	}
 
 	// if (sensor_attr_get(sensor, SENSOR_CHAN_ACCEL_XYZ, SENSOR_ATTR_SAMPLING_FREQUENCY, &sampling_freq) < 0)
