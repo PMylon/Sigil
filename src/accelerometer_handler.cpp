@@ -26,9 +26,10 @@
 
 #define BUFLEN 300
 #define st_lsm9ds1_acc st_lsm6ds0 // Driver for lsm9ds1 acc is compatible with lsm6ds0
+#define sensor_acc nxp_fxos8700
 
 int begin_index = 0;
-const struct device *sensor = DEVICE_DT_GET_ONE(st_lsm9ds1_acc);
+const struct device *sensor = DEVICE_DT_GET_ONE(sensor_acc);
 int current_index = 0;
 
 float bufx[BUFLEN] = { 0.0f };
@@ -75,12 +76,23 @@ TfLiteStatus SetupAccelerometer(tflite::ErrorReporter *error_reporter)
 				     sensor->name);
 	}
 
-	struct sensor_value sampling_freq;
+	// struct sensor_value sampling_freq;
 
-	if (sensor_attr_get(sensor, SENSOR_CHAN_ACCEL_XYZ, SENSOR_ATTR_SAMPLING_FREQUENCY, &sampling_freq) < 0)
-	{
-		TF_LITE_REPORT_ERROR(error_reporter, "Failed to get device's sampling frequency!\n");
+	struct sensor_value sampling_freq = {
+		.val1 = 50,
+		.val2 = 0,
+	};
+
+	if (sensor_attr_set(dev, SENSOR_CHAN_ALL,
+			    SENSOR_ATTR_SAMPLING_FREQUENCY, &sampling_freq)) {
+		printk("Could not set sampling frequency\n");
+		return;
 	}
+
+	// if (sensor_attr_get(sensor, SENSOR_CHAN_ACCEL_XYZ, SENSOR_ATTR_SAMPLING_FREQUENCY, &sampling_freq) < 0)
+	// {
+	// 	TF_LITE_REPORT_ERROR(error_reporter, "Failed to get device's sampling frequency!\n");
+	// }
 
 	// TODO Debug
 	printk("Sampling frequency is: %d\n", sampling_freq.val1);

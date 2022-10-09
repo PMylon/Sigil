@@ -69,11 +69,12 @@ build()
 
     echo "Building project.."
 
-    cd thirdparty/tools/BOSSA
-    make
-    cd ../../../
+    # cd thirdparty/tools/BOSSA
+    # make
+    # cd ../../../
 
-    west build -p auto -b arduino_nano_33_ble .
+    # west build -p auto -b arduino_nano_33_ble .
+    west build -p auto -b frdm_k64f .
 }
 
 flash()
@@ -86,9 +87,10 @@ flash()
 
     echo "Flashing project"
 
-    sudo chmod a+rw /dev/ttyACM0
+    # sudo chmod a+rw /dev/ttyACM0
 
-    west flash --bossac=thirdparty/tools/BOSSA/bin/bossac
+    # west flash --bossac=thirdparty/tools/BOSSA/bin/bossac
+    west flash
 }
 
 debug()
