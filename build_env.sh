@@ -86,6 +86,8 @@ flash()
 
     echo "Flashing project"
 
+    sudo chmod a+rw /dev/ttyACM0
+
     west flash --bossac=thirdparty/tools/BOSSA/bin/bossac
 }
 
