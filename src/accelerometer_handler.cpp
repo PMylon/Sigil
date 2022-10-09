@@ -29,7 +29,7 @@
 #define sensor_acc nxp_fxos8700
 
 int begin_index = 0;
-const struct device *sensor = DEVICE_DT_GET_ONE(sensor_acc);
+const struct device *sensor = DEVICE_DT_GET_ONE(nxp_fxos8700);
 int current_index = 0;
 
 float bufx[BUFLEN] = { 0.0f };
